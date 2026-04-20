@@ -12,6 +12,12 @@ For any questions or issues please contact the owner of this repository.
 In this section, details on how to reproduce the data is described in detail. Generally, very little needs to be altered. If there are any bugs, please notify the owner of this repository. Please see Figure 9 of the mansucript for a overview of the computational pipeline. For dependencies see the sections at the end of this README.
 
 ## SNr Model
+The SNr model in this repository is an extension of that from:
+
+Phillips RS, Rosner I, Gittis AH, Rubin JE. The effects of chloride dynamics on substantia nigra pars reticulata responses to pallidal and striatal inputs. Elife. 2020 Sep 7;9:e55592. doi: [10.7554/eLife.55592](https://doi.org/10.7554/elife.55592). PMID: 32894224; PMCID: PMC7476764.
+
+The model is simulated as a C++ program and called via Python. Parameter values, simulation types, and stored data are determined during set-up via Python.
+
 
 ## Slice Scripts
 1. `parameter_search_slice.py`<br>
@@ -128,6 +134,41 @@ In this section, details on how to reproduce the data is described in detail. Ge
 
 ## Figure Generation
 
+1. Figure 1: `$ python network_generation_figure.py`<br>
+    * data: `data/example_networks_heterogeneity_noise_gkcc2_2`
+    * To generate data, run `$ python example_networks_heterogeneity_noise.py` with:
+        * `vivo = False`
+        * `run = True`
+        * `analyze = True`
+        * `gen_data_file = True` (set to `False` for extra analysis)
+2. Figure 2: `$ python slice_figure`<br>
+    * data in `default_network/slice`
+    * NEED DESC ON HOW TO GENERATE
+3. Figure 3: `$ python in_vivo_figure_resubmission.py`
+    * data in `default_network/vivo`
+    * NEED DESC ON HOW TO GENERATE
+4. Figure 4: `$ python fit_rates_figure.py`
+    * Creates `results_df_tree.csv`
+5. Figure 5: `$ python ml_decision_tree.py`
+    * Uses `results_df_tree.csv` from Figure 4.
+6. Figure 6: `$ python naive_stim_figure.py`
+7. Figure 7: `$ python dd_stim_figure.py`
+8. Figure 8: `$ python response_dist_measures_figure.py`
+    * Generates `neurons_response.csv`
+    * Data in `data/example_sims_dynamics`
+    * NEED DESC ON HOW TO GENERATE
+9. Figure S1 and Figure S3: `$ python parameter_distributions_figures.py`
+    * Runs both _slice_ and _in vivo_ parameter distributions for matching neurons.
+    * Histograms are stored in `match_[TYPE]_neuron_distributions/[FEATURE]_histogram.pdf`
+10. Figure S2: `$ python experimental_stats_figure.py`
+11. Figure S4: `$ python choice_decision_tree.py`
+    * Uses `results_df_tree.csv` from Figure 4.
+12. Figure S5: `$ python trpc3_change_figure.py`
+13. Figure S6: `$ python stim_gradients.py`
+14. Figure S7: `$ compare_wstr_correlation_results.py`
+    * Data in `example_sims_Wstr_[TYPE]/data/param_search_vivo_from_slice`
+    * NEED DESC ON HOW TO GENERATE
+15. Figure S8: `$ python response_violin_figure.py`
 
 
 ## Helper Files
