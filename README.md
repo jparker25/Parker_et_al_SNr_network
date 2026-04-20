@@ -8,15 +8,23 @@ A Python virtual environment is advised and is assumed in all instructions in th
 
 For any questions or issues please contact the owner of this repository.
 
-# Running Code
-In this section, details on how to reproduce the data is described in detail. Generally, very little needs to be altered. If there are any bugs, please notify the owner of this repository. Please see Figure 9 of the mansucript for a overview of the computational pipeline. For dependencies see the sections at the end of this README.
-
-## SNr Model
+# SNr Model
 The SNr model in this repository is an extension of that from:
 
 Phillips RS, Rosner I, Gittis AH, Rubin JE. The effects of chloride dynamics on substantia nigra pars reticulata responses to pallidal and striatal inputs. Elife. 2020 Sep 7;9:e55592. doi: [10.7554/eLife.55592](https://doi.org/10.7554/elife.55592). PMID: 32894224; PMCID: PMC7476764.
 
 The model is simulated as a C++ program and called via Python. Parameter values, simulation types, and stored data are determined during set-up via Python.
+
+# Repository Structure
+This repository assumes the following directories exist:
+* `code`: source code for SNr model, analysis scripts, and figure generation
+    * `code/data`: location where all simulation data is stored
+    * `code/data_processed`: location where necessary files to regenerate any manuscript simulation is stored    
+* `figures`: location where all generated figures of manuscript exist
+
+
+# Running Code
+In this section, details on how to reproduce the data is described in detail. Generally, very little needs to be altered. If there are any bugs, please notify the owner of this repository. Please see Figure 9 of the mansucript for a overview of the computational pipeline. For dependencies see the sections at the end of this README.
 
 
 ## Slice Scripts
