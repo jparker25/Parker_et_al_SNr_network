@@ -20,7 +20,7 @@ import network_analysis as na
 import poisson_surprise
 
 # change to location where expirmental data resides
-EXPERIMENTAL_DATA_DIREC = "/Users/johnparker/UPitt_Data"
+EXPERIMENTAL_DATA_DIREC = "../experimental_data"
 
 def ephys_exp_data():
     xcel_file = pd.ExcelFile(
