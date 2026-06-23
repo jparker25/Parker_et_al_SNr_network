@@ -19,10 +19,12 @@ import plot_model_results as pmr
 import network_analysis as na
 import poisson_surprise
 
+# change to location where expirmental data resides
+EXPERIMENTAL_DATA_DIREC = "/Users/johnparker/UPitt_Data"
 
 def ephys_exp_data():
     xcel_file = pd.ExcelFile(
-        "/Users/johnparker/UPitt_Data/Aristieta2024_GaoRecordings/Ephys_overall_analysis.xlsx"
+        f"{EXPERIMENTAL_DATA_DIREC}/Aristieta2024_GaoRecordings/Ephys_overall_analysis.xlsx"
     )
     gpe = pd.read_excel(xcel_file, "GPe")
     gpe_dd = pd.read_excel(xcel_file, "GPe_DD")
@@ -70,7 +72,7 @@ def get_modulation_factors(exp_df):
 
 def get_classification_results():
     results_dir = (
-        "/Users/johnparker/UPitt_Data/continuous_light/gpe_pv_hsyn/processed_data_short"
+        f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/gpe_pv_hsyn/processed_data_short"
     )
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
@@ -78,7 +80,7 @@ def get_classification_results():
         (df["group"].str.contains("PV")) & (df["mouse"].str.contains("Naive"))
     ]
 
-    results_dir = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short"
+    results_dir = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short"
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
     gpe_pv_pulsed20Hz = df[
@@ -86,7 +88,7 @@ def get_classification_results():
     ]
 
     results_dir = (
-        "/Users/johnparker/UPitt_Data/continuous_light/d1_msns/processed_data_short"
+        f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/d1_msns/processed_data_short"
     )
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
@@ -94,7 +96,7 @@ def get_classification_results():
         (df["group"].str.contains("MSNs")) & (df["mouse"].str.contains("Naive"))
     ]
 
-    results_dir = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/d1_msns/processed_data_short"
+    results_dir = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/d1_msns/processed_data_short"
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
     d1_pv_pulsed20Hz = df[
@@ -106,7 +108,7 @@ def get_classification_results():
 
 def get_dd_classification_results():
     results_dir = (
-        "/Users/johnparker/UPitt_Data/continuous_light/gpe_pv_hsyn/processed_data_short"
+        f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/gpe_pv_hsyn/processed_data_short"
     )
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
@@ -114,7 +116,7 @@ def get_dd_classification_results():
         (df["group"].str.contains("PV")) & (df["mouse"].str.contains("6-OHDA"))
     ]
 
-    results_dir = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short"
+    results_dir = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short"
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
     gpe_pv_pulsed20Hz = df[
@@ -122,7 +124,7 @@ def get_dd_classification_results():
     ]
 
     results_dir = (
-        "/Users/johnparker/UPitt_Data/continuous_light/d1_msns/processed_data_short"
+        f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/d1_msns/processed_data_short"
     )
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
@@ -130,7 +132,7 @@ def get_dd_classification_results():
         (df["group"].str.contains("MSNs")) & (df["mouse"].str.contains("6-OHDA"))
     ]
 
-    results_dir = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/d1_msns/processed_data_short"
+    results_dir = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/d1_msns/processed_data_short"
     csv = f"{results_dir}/all_data.csv"
     df = pd.read_csv(csv)
     d1_pv_pulsed20Hz = df[
@@ -141,60 +143,60 @@ def get_dd_classification_results():
 
 
 def get_naive_continuous_stim_data():
-    csv = "/Users/johnparker/UPitt_Data/continuous_light/gpe_pv_hsyn/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/gpe_pv_hsyn/processed_data_short/all_data.csv"
     cont_gpe = pd.read_csv(csv)
     cont_gpe = cont_gpe[
         (cont_gpe["mouse"] == "Naive mice")
         & (cont_gpe["group"] == "Naive_mice_PV-DIO-ChR2_in_GPe")
     ]
 
-    csv = "/Users/johnparker/UPitt_Data/continuous_light/d1_msns/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/d1_msns/processed_data_short/all_data.csv"
     cont_d1 = pd.read_csv(csv)
     cont_d1 = cont_d1[(cont_d1["mouse"] == "Naive")]
     return cont_gpe, cont_d1
 
 
 def get_dd_continuous_stim_data():
-    csv = "/Users/johnparker/UPitt_Data/continuous_light/gpe_pv_hsyn/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/gpe_pv_hsyn/processed_data_short/all_data.csv"
     cont_gpe = pd.read_csv(csv)
     cont_gpe = cont_gpe[
         (cont_gpe["mouse"] == "6-OHDA mice")
         & (cont_gpe["group"] == "6-OHDA_mice_PV-DIO-ChR2_in_GPe")
     ]
 
-    csv = "/Users/johnparker/UPitt_Data/continuous_light/d1_msns/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/continuous_light/d1_msns/processed_data_short/all_data.csv"
     cont_d1 = pd.read_csv(csv)
     cont_d1 = cont_d1[(cont_d1["mouse"] == "6-OHDA")]
     return cont_gpe, cont_d1
 
 
 def get_naive_pulsed_stim_data():
-    csv = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short/all_data.csv"
     df = pd.read_csv(csv)
     df_gpe = df[(df["mouse"] == "Naive")]
 
-    csv = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/d1_msns/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/d1_msns/processed_data_short/all_data.csv"
     df = pd.read_csv(csv)
     df_d1 = df[(df["mouse"] == "Naive")]
     return df_gpe, df_d1
 
 
 def get_dd_pulsed_stim_data():
-    csv = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/gpe_pv/processed_data_short/all_data.csv"
     df = pd.read_csv(csv)
     df_gpe = df[(df["mouse"] == "6-OHDA")]
 
-    csv = "/Users/johnparker/UPitt_Data/pulsed_light_terminal_20Hz/d1_msns/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/pulsed_light_terminal_20Hz/d1_msns/processed_data_short/all_data.csv"
     df = pd.read_csv(csv)
     df_d1 = df[(df["mouse"] == "6-OHDA")]
     return df_gpe, df_d1
 
 
 def get_slice_data():
-    csv = "/Users/johnparker/UPitt_Data/slice/gpe_pv/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/slice/gpe_pv/processed_data_short/all_data.csv"
     slice_gpe = pd.read_csv(csv)
     slice_gpe = slice_gpe[slice_gpe["group"] != "stim_20Hz_ZD_True"]
-    csv = "/Users/johnparker/UPitt_Data/slice/d1_msns/processed_data_short/all_data.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/slice/d1_msns/processed_data_short/all_data.csv"
     slice_d1 = pd.read_csv(csv)
     slice_d1 = slice_d1[slice_d1["group"] != "stim_20Hz_ZD_True"]
     return slice_gpe, slice_d1
@@ -202,7 +204,7 @@ def get_slice_data():
 
 def get_slice_baseline_spikes_short():
     all_spikes = []
-    gpe_slice_path = "/Users/johnparker/UPitt_Data/slice/gpe_pv/processed_data_short"
+    gpe_slice_path = f"{EXPERIMENTAL_DATA_DIREC}/slice/gpe_pv/processed_data_short"
     for dir in os.listdir(gpe_slice_path):
         if "False" in dir:
             for neuron in os.listdir(f"{gpe_slice_path}/{dir}"):
@@ -210,7 +212,7 @@ def get_slice_baseline_spikes_short():
                     spikes = np.loadtxt(f"{gpe_slice_path}/{dir}/{neuron}/spikes.txt")
                     spikes = spikes[spikes <= 2]
                     all_spikes.append(spikes)
-    d1_slice_path = "/Users/johnparker/UPitt_Data/slice/d1_msns/processed_data_short"
+    d1_slice_path = f"{EXPERIMENTAL_DATA_DIREC}/slice/d1_msns/processed_data_short"
     for dir in os.listdir(d1_slice_path):
         if "False" in dir:
             for neuron in os.listdir(f"{d1_slice_path}/{dir}"):
@@ -220,7 +222,7 @@ def get_slice_baseline_spikes_short():
                     all_spikes.append(spikes)
 
     data = pd.read_csv(
-        "/Users/johnparker/UPitt_Data/slice/SNr cell firing baseline.csv"
+        f"{EXPERIMENTAL_DATA_DIREC}/slice/SNr cell firing baseline.csv"
     )
 
     # Convert each column to a list of spike times, dropping NaN values
@@ -233,13 +235,13 @@ def get_slice_baseline_spikes_short():
 
 
 def get_baseline_slice_data():
-    csv = "/Users/johnparker/UPitt_Data/slice/baseline_15s_freq_cv.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/slice/baseline_15s_freq_cv.csv"
     slice_baseline = pd.read_csv(csv)
     return slice_baseline
 
 
 def get_baseline_slice_data_short():
-    csv = "/Users/johnparker/UPitt_Data/slice/baseline_15s_freq_cv_last2s.csv"
+    csv = f"{EXPERIMENTAL_DATA_DIREC}/slice/baseline_15s_freq_cv_last2s.csv"
     slice_baseline = pd.read_csv(csv)
     return slice_baseline
 
